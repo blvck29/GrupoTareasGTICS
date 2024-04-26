@@ -17,7 +17,7 @@ public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
     List<Employees> getEmployeesByJob(Job job);
 
 
-    @Query(value="SELECT * FROM tabla WHERE nombre LIKE '?1%'", nativeQuery= true )
+    @Query(value="SELECT * FROM employees WHERE nombre LIKE '?1%'", nativeQuery= true )
     List <Employees> ListaFiltrada(String word);
 
 }
