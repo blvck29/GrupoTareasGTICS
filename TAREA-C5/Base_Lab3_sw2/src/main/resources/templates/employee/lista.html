@@ -11,8 +11,8 @@
 <body>
     <div class="container">
         <h1>Lista de Empleados</h1>
-        <a class="btn btn-primary mt-4 mb-4" th:href="@{}"></a>                 <!-- COMPLETAR -->
-        <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/newFrm}">Nuevo Empleado</a>                 <!-- COMPLETAR -->
+        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/buscar}">                <!-- COMPLETAR -->
             <!-- COMPLETAR -->
             <div class="input-group-append">
                 <!-- COMPLETAR -->
@@ -21,14 +21,14 @@
 
         <!-- COMPLETAR -->
         <!-- COMPLETAR -->
-            <table class="table table-sm" th:if="${}">
+            <table class="table table-sm" th:if="${listaEmpleados.size() != 0}">
                 <thead>
                 <tr>
                     <!-- COMPLETAR -->
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="employee : ${}">
+                <tr th:each="employee : ${listaEmpleados}">
                     <td></td>
                 </tr>
                 </tbody>
