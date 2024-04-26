@@ -1,19 +1,28 @@
 package com.example.laboratorio3.controller;
 
+import com.example.laboratorio3.entity.Employees;
+import com.example.laboratorio3.repository.EmployeesRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 //COMPLETAR
 @Controller
 public class EmployeeController {
 
+    final EmployeesRepository employeesRepository;
+
+    public EmployeeController(EmployeesRepository employeesRepository) {
+        this.employeesRepository = employeesRepository;
+    }
+
     //COMPLETAR
     @GetMapping(value = "/employee/lista")
-    public String listaEmployee(   ){
-        //COMPLETAR
+    public String listaEmployee(Model model){
+        List<Employees> listaEmpleados = employeesRepository.findAll();
+        model.addAttribute("listaEmpleados", listaEmpleados);
         return "employee/lista";
     }
     @GetMapping(value = "/employee/newFrm")
@@ -37,5 +46,9 @@ public class EmployeeController {
         return "redirect:employee/lista";
     }
 
+    @GetMapping(value = "/employee/buscar")
+    public String buscarEmpleado(Model mode) {
+        return "employee/lista";
+    }
 
 }
