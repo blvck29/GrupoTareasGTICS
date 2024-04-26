@@ -43,6 +43,11 @@ public class EmployeeController {
         return "employee/editFrm";
     }
 
+    @PostMapping(value = "/employee/newEmployee")
+    public String newEmployee() {
+        return "redirect:/employee/lista";
+    }
+
     @GetMapping(value = "/employee/borrar")
     public String borrarEmpleado(Model model) {
         return "redirect:employee/lista";
