@@ -106,12 +106,12 @@ public class EmployeeController {
 
         employeesRepository.save(employee);
 
-        attr.addAttribute("msg", "Uusuario creado exitosamente");
+        attr.addAttribute("msg", "Empleado creado exitosamente");
         return "redirect:/employee/lista";
     }
 
     @GetMapping(value = "/employee/borrar")
-    public String borrarEmpleado(Model model, @RequestParam("id") String id) {
+    public String borrarEmpleado(RedirectAttributes attr, @RequestParam("id") String id) {
 
         Optional<Employees> optionalEmployee = employeesRepository.findById(Integer.valueOf(id));
 
@@ -119,6 +119,7 @@ public class EmployeeController {
             employeesRepository.deleteById(Integer.valueOf(id));
         }
 
+        attr.addAttribute("msg", "Empleado borrado exitosamente");
         return "redirect:lista";
     }
 
