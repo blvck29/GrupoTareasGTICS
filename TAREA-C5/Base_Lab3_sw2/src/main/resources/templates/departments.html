@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department Statistics</title>
+</head>
+<body>
+<h1>Department Statistics</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Country Name</th>
+        <th>City</th>
+        <th>Number of Departments</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dept : ${lista}">
+        <td th:text="${dept.countryName}"></td>
+        <td th:text="${dept.city}"></td>
+        <td th:text="${dept.numberOfDepartments}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
