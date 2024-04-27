@@ -2,6 +2,8 @@ package com.example.laboratorio3.controller;
 
 import com.example.laboratorio3.entity.Employees;
 import com.example.laboratorio3.repository.EmployeesRepository;
+import com.example.laboratorio3.repository.JobRepository;
+import com.example.laboratorio3.repository.LocationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +17,13 @@ import java.util.List;
 public class EmployeeController {
 
     final EmployeesRepository employeesRepository;
+    final JobRepository jobRepository;
+    final LocationRepository locationRepository;
 
-    public EmployeeController(EmployeesRepository employeesRepository) {
+    public EmployeeController(EmployeesRepository employeesRepository, JobRepository jobRepository, LocationRepository locationRepository) {
         this.employeesRepository = employeesRepository;
+        this.jobRepository = jobRepository;
+        this.locationRepository = locationRepository;
     }
 
     //COMPLETAR
