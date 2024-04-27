@@ -14,29 +14,29 @@
             <div class="row">
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre">
+                    <input type="text" name="nombre" id="nombre" required>
                 </div>
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="apellido">Apellido</label>
-                    <input type="text" name="apellido" id="apellido">
+                    <input type="text" name="apellido" id="apellido" required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="correo">Correo Electrónico</label>
-                    <input type="text" name="correo" id="correo">
+                    <input type="text" name="correo" id="correo" required>
                 </div>
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="contrasena">Contraseña</label>
-                    <input type="text" name="contrasena" id="contrasena">
+                    <input type="text" name="contrasena" id="contrasena" required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="puesto">Puesto</label>
-                    <select name="puesto" id="puesto">
+                    <select name="puesto" id="puesto" required>
                         <div th:each="puesto : ${listaPuestos}" >
                             <option th:if="${puesto.getJobTitle() != null}" th:text="${puesto.getJobTitle()}" th:value="${puesto.getJobId()}"></option>
                         </div>
@@ -44,23 +44,23 @@
                 </div>
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="sueldo">Sueldo</label>
-                    <input type="text" name="sueldo" id="sueldo">
+                    <input type="text" name="sueldo" id="sueldo" required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="jefe">Jefe</label>
-                    <select name="jefe" id="jefe">
-                        <div th:each="jefe : ${listaJefes}" >
+                    <select name="jefe" id="jefe" required>
+                        <div th:each="jefe : ${listaJefes}">
                             <option th:if="${jefe.getManager() != null}" th:text="${jefe.getManager().getFirstName()} + ' ' + ${jefe.getManager().getLastName()}" th:value="${jefe.getManager().getEmployee_id()}"></option>
                         </div>
                     </select>
                 </div>
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="departamento">Departamento</label>
-                    <select name="departamento" id="departamento">
-                        <div th:each="dep : ${listaJefes}" >
+                    <select name="departamento" id="departamento" required>
+                        <div th:each="dep : ${listaJefes}">
                             <option th:if="${dep.getDepartmentName() != null}" th:text="${dep.getDepartmentName()}" th:value="${dep.getDepartmentId()}"></option>
                         </div>
                     </select>
