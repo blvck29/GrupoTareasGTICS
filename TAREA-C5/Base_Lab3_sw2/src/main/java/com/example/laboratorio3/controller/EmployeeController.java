@@ -81,7 +81,6 @@ public class EmployeeController {
     @PostMapping(value = "/employee/buscar")
     public String buscarEmpleado(Model model, RedirectAttributes attr, @RequestParam("word") String word) {
 
-        System.out.println("la palabra es: " + word);
 
         List<Employees> lista = employeesRepository.ListaFiltrada(word);
 
