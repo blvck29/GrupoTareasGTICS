@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -52,8 +53,16 @@ public class EmployeeController {
         return "redirect:employee/lista";
     }
 
-    @GetMapping(value = "/employee/buscar")
-    public String buscarEmpleado(Model mode) {
+    @PostMapping(value = "/employee/buscar")
+    public String buscarEmpleado(Model model, @RequestParam("word") String word) {
+
+        System.out.println(word);
+
+        List <Employees> lista = employeesRepository.ListaFiltrada(word);
+
+        model.addAttribute("listaEmpleados", lista);
+
+
         return "employee/lista";
     }
 
