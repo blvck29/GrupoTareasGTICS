@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -78,14 +79,17 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/employee/buscar")
-    public String buscarEmpleado(Model model, @RequestParam("word") String word) {
+    public String buscarEmpleado(Model model, RedirectAttributes attr, @RequestParam("word") String word) {
 
-        System.out.println(word);
+        System.out.println("la palabra es: " + word);
 
-        List <Employees> lista = employeesRepository.ListaFiltrada(word);
+        List<Employees> lista = employeesRepository.ListaFiltrada(word);
 
-        model.addAttribute("listaEmpleados", lista);
+        if(lista == null){
+            System.out.println("Lista nula");
+        }
 
+       model.addAttribute("listaEmpleados", lista);
 
         return "employee/lista";
     }
