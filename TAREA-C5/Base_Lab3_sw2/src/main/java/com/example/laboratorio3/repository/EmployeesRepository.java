@@ -17,6 +17,8 @@ public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
 
     List<Employees> getEmployeesByJob(Job job);
 
+    @Query(value = "SELECT MAX(em.employee_id) FROM employees em", nativeQuery = true)
+    Integer findLastEmployeeId();
 
     //@Query(value="SELECT * FROM employees", nativeQuery= true )
    // List<Employees> ListaFiltrada(String word);

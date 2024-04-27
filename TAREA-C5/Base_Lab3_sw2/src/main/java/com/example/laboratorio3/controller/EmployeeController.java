@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,10 +91,13 @@ public class EmployeeController {
         }
 
         Employees employee = new Employees();
+        employee.setEmployee_id(employeesRepository.findLastEmployeeId() + 1);
         employee.setFirstName(nombre);
         employee.setLastName(apellido);
         employee.setEmail(correo);
         employee.setPassword(contrasena);
+        java.sql.Date sqlDate = Date.valueOf(LocalDate.now());
+        employee.setHireDate(sqlDate);
         employee.setJob(empJob);
         employee.setSalary(Float.parseFloat(sueldo));
         employee.setManager(empManager);
