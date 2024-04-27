@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg" style="background-color: #f5c6cb">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg" style="background-color: #f5c6cb">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">CLASE 5 - GTICS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
                     <a class="nav-link" th:href="@{/employee/lista}">Empleados</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/history/history}">Historial</a>
+                    <a class="nav-link" th:href="@{/history/lista}">Historial</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/Search/indice}">Reportes</a>
