@@ -44,7 +44,15 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/employee/newEmployee")
-    public String newEmployee() {
+    public String newEmployee(@RequestParam("nombre") String nombre,
+                              @RequestParam("apellido") String apellido,
+                              @RequestParam("correo") String correo,
+                              @RequestParam("contrasena") String contrasena,
+                              @RequestParam("puesto") String puesto,
+                              @RequestParam("sueldo") String sueldo,
+                              @RequestParam("jefe") String jefe,
+                              @RequestParam("departamento") String departamento) {
+
         return "redirect:/employee/lista";
     }
 
