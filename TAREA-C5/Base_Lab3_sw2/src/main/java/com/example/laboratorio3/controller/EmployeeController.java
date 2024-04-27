@@ -5,6 +5,7 @@ import com.example.laboratorio3.repository.EmployeesRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -39,6 +40,11 @@ public class EmployeeController {
     @GetMapping(value = "/employee/editFrm")
     public String editarEmployee() {
         return "employee/editFrm";
+    }
+
+    @PostMapping(value = "/employee/newEmployee")
+    public String newEmployee() {
+        return "redirect:/employee/lista";
     }
 
     @GetMapping(value = "/employee/borrar")
