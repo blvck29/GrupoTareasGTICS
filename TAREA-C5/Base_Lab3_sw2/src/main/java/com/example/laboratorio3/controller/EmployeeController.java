@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,6 +85,38 @@ public class EmployeeController {
                               @RequestParam("sueldo") String sueldo,
                               @RequestParam("jefe") String jefe,
                               @RequestParam("departamento") String departamento) {
+
+        Optional<Job> optionalJob = jobRepository.findById(puesto);
+        Job empJob = new Job();
+        Optional<Employees> optionalManager = employeesRepository.findById(Integer.valueOf(jefe));
+        Employees empManager = new Employees();
+        Optional<Department> optionalDepartment = departmetRepository.findById(Integer.valueOf(departamento));
+        Department empDepartment = new Department();
+
+        if (optionalJob.isPresent()){
+            empJob = optionalJob.get();
+        }
+        if (optionalManager.isPresent()){
+            empManager = optionalManager.get();
+        }
+        if (optionalDepartment.isPresent()){
+            empDepartment = optionalDepartment.get();
+        }
+
+        Employees employee = new Employees();
+        employee.setEmployee_id(employeesRepository.findLastEmployeeId() + 1);
+        employee.setFirstName(nombre);
+        employee.setLastName(apellido);
+        employee.setEmail(correo);
+        employee.setPassword(contrasena);
+        java.sql.Date sqlDate = Date.valueOf(LocalDate.now());
+        employee.setHireDate(sqlDate);
+        employee.setJob(empJob);
+        employee.setSalary(Float.parseFloat(sueldo));
+        employee.setManager(empManager);
+        employee.setDepartment(empDepartment);
+
+        employeesRepository.save(employee);
 
         return "redirect:/employee/lista";
     }
