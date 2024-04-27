@@ -22,7 +22,7 @@ public class HistoryController {
         return "history/lista";
     }
     @GetMapping(value = "/history/buscar")
-    public String buscarHistory(Model model, @RequestParam("busqueda") String busqueda) {
+    public String buscarHistory(Model model, @RequestParam(value = "busqueda",required = false,defaultValue = "") String busqueda) {
         model.addAttribute("listaHistorialEmpleados",employeesRepository.listaHistoriaEmpleado(busqueda));
         return "history/lista";
     }
