@@ -37,7 +37,8 @@
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="puesto">Puesto</label>
                     <select name="puesto" id="puesto" required>
-                        <div th:each="puesto : ${listaPuestos}" >
+                        <option value="null">Ninguno</option>
+                        <div th:each="puesto : ${listaPuestos}">
                             <option th:if="${puesto.getJobTitle() != null}" th:text="${puesto.getJobTitle()}" th:value="${puesto.getJobId()}"></option>
                         </div>
                     </select>
@@ -52,6 +53,7 @@
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="jefe">Jefe</label>
                     <select name="jefe" id="jefe" required>
+                        <option value="null">Ninguno</option>
                         <div th:each="jefe : ${listaJefes}">
                             <option th:if="${jefe.getManager() != null}" th:text="${jefe.getManager().getFirstName()} + ' ' + ${jefe.getManager().getLastName()}" th:value="${jefe.getManager().getEmployee_id()}"></option>
                         </div>
@@ -60,6 +62,7 @@
                 <div class="form-group col-6 d-flex flex-column">
                     <label for="departamento">Departamento</label>
                     <select name="departamento" id="departamento" required>
+                        <option value="null">Ninguno</option>
                         <div th:each="dep : ${listaJefes}">
                             <option th:if="${dep.getDepartmentName() != null}" th:text="${dep.getDepartmentName()}" th:value="${dep.getDepartmentId()}"></option>
                         </div>

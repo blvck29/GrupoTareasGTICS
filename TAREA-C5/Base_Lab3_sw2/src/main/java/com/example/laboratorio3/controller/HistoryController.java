@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import com.example.laboratorio3.repository.JobHistoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -21,8 +22,8 @@ public class HistoryController {
         model.addAttribute("listaHistorialEmpleados",employeesRepository.listaHistoriaEmpleado(""));
         return "history/history";
     }
-    @GetMapping(value = "/history/buscar")
-    public String buscarHistory(Model model, @RequestParam(value = "busqueda",required = false,defaultValue = "") String busqueda) {
+    @PostMapping(value = "/history/buscar")
+    public String buscarHistory(Model model, @RequestParam(value = "word",required = false,defaultValue = "") String busqueda) {
         model.addAttribute("listaHistorialEmpleados",employeesRepository.listaHistoriaEmpleado(busqueda));
         return "history/history";
     }
