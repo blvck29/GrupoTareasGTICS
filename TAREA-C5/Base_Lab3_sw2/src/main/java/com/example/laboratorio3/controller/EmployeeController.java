@@ -46,5 +46,9 @@ public class EmployeeController {
         return "redirect:employee/lista";
     }
 
+    @GetMapping(value = "/employee/buscar")
+    public String buscarEmpleado(Model mode) {
+        return "employee/lista";
+    }
 
 }
