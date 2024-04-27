@@ -1,6 +1,9 @@
 package com.example.laboratorio3.controller;
 
+import com.example.laboratorio3.entity.Department;
 import com.example.laboratorio3.entity.Employees;
+import com.example.laboratorio3.entity.Job;
+import com.example.laboratorio3.repository.DepartmetRepository;
 import com.example.laboratorio3.repository.EmployeesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +29,13 @@ public class EmployeeController {
     final EmployeesRepository employeesRepository;
     final JobRepository jobRepository;
     final LocationRepository locationRepository;
+    private final DepartmetRepository departmetRepository;
 
-    public EmployeeController(EmployeesRepository employeesRepository, JobRepository jobRepository, LocationRepository locationRepository) {
+    public EmployeeController(EmployeesRepository employeesRepository, JobRepository jobRepository, LocationRepository locationRepository, DepartmetRepository departmetRepository) {
         this.employeesRepository = employeesRepository;
         this.jobRepository = jobRepository;
         this.locationRepository = locationRepository;
+        this.departmetRepository = departmetRepository;
     }
 
     //COMPLETAR

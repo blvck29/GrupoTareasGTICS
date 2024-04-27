@@ -37,5 +37,8 @@ public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
             "lower(d.department_name) LIKE lower(concat('%',?1,'%'))", nativeQuery = true)
     List<EmpleadoHistoriaDTO> listaHistoriaEmpleado(String busqueda);
 
+    @Query(value = "SELECT e.firstName, e.lastName, jh.start_date, jh.end_date, j.jobTitle FROM JobHistory jh JOIN jh.employee e JOIN jh.job j WHERE e.salary > 15000")
+    List<Employees> findEmployeesWithHighSalary();
+
 
 }
