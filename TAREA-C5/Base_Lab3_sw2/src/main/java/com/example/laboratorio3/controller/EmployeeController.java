@@ -84,7 +84,8 @@ public class EmployeeController {
                               @RequestParam("puesto") String puesto,
                               @RequestParam("sueldo") String sueldo,
                               @RequestParam("jefe") String jefe,
-                              @RequestParam("departamento") String departamento) {
+                              @RequestParam("departamento") String departamento,
+                              RedirectAttributes attr) {
 
         Optional<Job> optionalJob = jobRepository.findById(puesto);
         Job empJob = new Job();
@@ -118,12 +119,21 @@ public class EmployeeController {
 
         employeesRepository.save(employee);
 
+        attr.addFlashAttribute("msg", "Empleado creado exitosamente");
         return "redirect:/employee/lista";
     }
 
     @GetMapping(value = "/employee/borrar")
-    public String borrarEmpleado(Model model) {
-        return "redirect:employee/lista";
+    public String borrarEmpleado(RedirectAttributes attr, Model model, @RequestParam("id") String id) {
+
+        Optional<Employees> optionalEmployee = employeesRepository.findById(Integer.valueOf(id));
+
+        if (optionalEmployee.isPresent()) {
+            employeesRepository.deleteById(Integer.valueOf(id));
+        }
+
+        attr.addFlashAttribute("msg", "Empleado borrado exitosamente");
+        return "redirect:lista";
     }
 
     @PostMapping(value = "/employee/buscar")

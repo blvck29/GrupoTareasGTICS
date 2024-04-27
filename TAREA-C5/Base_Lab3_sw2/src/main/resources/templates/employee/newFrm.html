@@ -9,6 +9,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 </head>
 <body class="container">
+
+<div th:insert="navbar.html :: navbar"></div>
+
     <h2>Nuevo Empleado</h2><hr />
         <form method="post" th:action="@{/employee/newEmployee}">
             <div class="row">
