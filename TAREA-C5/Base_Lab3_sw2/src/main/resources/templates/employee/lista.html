@@ -49,20 +49,16 @@
                     <td th:text="${employee.getDepartment().getDepartmentName()}"></td>
                     <td th:text="${employee.getDepartment().getLocation().getCity()}"></td>
                     <td>
-                        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/editFrm}">                <!-- COMPLETAR -->
-                            <!-- COMPLETAR -->
+                        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/editFrm}">
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-primary">Editar</button>
                             </div>
                         </form>
                     </td>
                     <td>
-                        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/borrar}">                <!-- COMPLETAR -->
-                            <!-- COMPLETAR -->
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-danger">Borrar</button>
-                            </div>
-                        </form>
+                        <div class="input-group-append">
+                            <a th:href=" '/Laboratorio3/employee/borrar?id=' + ${employee.getEmployee_id()}"><button type="button" class="btn btn-danger">Borrar</button></a>
+                        </div>
                     </td>
                 </tr>
                 </tbody>

@@ -109,8 +109,15 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/employee/borrar")
-    public String borrarEmpleado(Model model) {
-        return "redirect:employee/lista";
+    public String borrarEmpleado(Model model, @RequestParam("id") String id) {
+
+        Optional<Employees> optionalEmployee = employeesRepository.findById(Integer.valueOf(id));
+
+        if (optionalEmployee.isPresent()) {
+            employeesRepository.deleteById(Integer.valueOf(id));
+        }
+
+        return "redirect:lista";
     }
 
     @PostMapping(value = "/employee/buscar")
