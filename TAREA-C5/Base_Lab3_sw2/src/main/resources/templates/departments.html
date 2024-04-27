@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <title>Department Statistics</title>
 </head>
 <body>
-<h1>Department Statistics</h1>
 <table>
-    <thead>
-    <tr>
-        <th>Country Name</th>
-        <th>City</th>
-        <th>Number of Departments</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="dept : ${lista}">
-        <td th:text="${dept.countryName}"></td>
-        <td th:text="${dept.city}"></td>
-        <td th:text="${dept.numberOfDepartments}"></td>
-    </tr>
-    </tbody>
+
+    <div class="container">
+        <h1>Reporte de departamento por país y ciudad</h1>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{/Search/indice}">Regresar</a>
+        <table class="table table-sm" >
+            <thead>
+            <tr>
+                <td>País</td>
+                <td>Ciudad</td>
+                <td>Cantidad</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="dept : ${lista}">
+                <td th:text="${dept.countryName}"></td>
+                <td th:text="${dept.city}"></td>
+                <td th:text="${dept.numberOfDepartments}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 </table>
 </body>
 </html>

@@ -2,12 +2,10 @@ package com.example.laboratorio3.controller;
 
 import com.example.laboratorio3.entity.Employees;
 import com.example.laboratorio3.repository.EmployeesRepository;
-<<<<<<< HEAD
+
 import org.springframework.beans.factory.annotation.Autowired;
-=======
 import com.example.laboratorio3.repository.JobRepository;
 import com.example.laboratorio3.repository.LocationRepository;
->>>>>>> 4a288d680eda836e09c7c23fd2ed24413213b83f
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
