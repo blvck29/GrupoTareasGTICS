@@ -5,17 +5,15 @@ import com.example.laboratorio3.entity.Employees;
 import com.example.laboratorio3.entity.Job;
 import com.example.laboratorio3.repository.DepartmetRepository;
 import com.example.laboratorio3.repository.EmployeesRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.example.laboratorio3.repository.JobRepository;
 import com.example.laboratorio3.repository.LocationRepository;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -29,7 +27,7 @@ public class EmployeeController {
     final EmployeesRepository employeesRepository;
     final JobRepository jobRepository;
     final LocationRepository locationRepository;
-    private final DepartmetRepository departmetRepository;
+    final DepartmetRepository departmetRepository;
 
     public EmployeeController(EmployeesRepository employeesRepository, JobRepository jobRepository, LocationRepository locationRepository, DepartmetRepository departmetRepository) {
         this.employeesRepository = employeesRepository;
@@ -46,8 +44,12 @@ public class EmployeeController {
         return "employee/lista";
     }
     @GetMapping(value = "/employee/newFrm")
-    public String nuevoEmployeeForm( ) {
-        //COMPLETAR
+    public String nuevoEmployeeForm(Model model) {
+        List<Job> listaPuestos = jobRepository.findAll();
+        List<Department> listaJefes = departmetRepository.findAll();
+
+        model.addAttribute("listaPuestos", listaPuestos);
+        model.addAttribute("listaJefes",listaJefes);
         return "employee/newFrm";
     }
 
@@ -57,7 +59,7 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/employee/editFrm")
-    public String editarEmployee() {
+    public String editarEmployee(Model model) {
         return "employee/editFrm";
     }
 
@@ -119,14 +121,16 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/employee/buscar")
-    public String buscarEmpleado(Model model, @RequestParam("word") String word) {
+    public String buscarEmpleado(Model model, RedirectAttributes attr, @RequestParam("word") String word) {
 
-        System.out.println(word);
 
-        List <Employees> lista = employeesRepository.ListaFiltrada(word);
+        List<Employees> lista = employeesRepository.ListaFiltrada(word);
 
-        model.addAttribute("listaEmpleados", lista);
+        if(lista == null){
+            System.out.println("Lista nula");
+        }
 
+       model.addAttribute("listaEmpleados", lista);
 
         return "employee/lista";
     }

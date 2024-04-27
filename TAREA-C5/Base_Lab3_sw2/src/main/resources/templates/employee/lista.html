@@ -9,9 +9,17 @@
         <title>Lista de Empleados</title>
 </head>
 <body>
+
+    <div th:insert="navbar.html :: navbar"></div>
+
     <div class="container">
         <h1>Lista de Empleados</h1>
         <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/newFrm}">Nuevo Empleado</a>
+
+        <div class="container">
+            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+        </div>
+
         <form class="input-group mb-lg-3" method="post" th:action="@{/employee/buscar}">
             <!-- COMPLETAR -->
             <div class="input-group-append">
@@ -25,8 +33,6 @@
             </div>
         </form>
 
-        <!-- COMPLETAR -->
-        <!-- COMPLETAR -->
             <table class="table table-sm" th:if="${listaEmpleados.size() != 0}">
                 <thead>
                 <tr>
@@ -51,9 +57,9 @@
                     <td>
                         <form class="input-group mb-lg-3" method="post" th:action="@{/employee/editFrm}">
                             <div class="input-group-append">
-                                <button type="button" class="btn btn-primary">Editar</button>
+                                <a th:href="@{'/employee/editFrm' + '?id=' + ${employee.getEmployee_id()}}"><button type="button" class="btn btn-primary">Editar</button></a>
                             </div>
-                        </form>
+
                     </td>
                     <td>
                         <div class="input-group-append">
