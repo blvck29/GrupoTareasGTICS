@@ -22,4 +22,5 @@ final JobHistoryRepository jobHistoryRepository;
         return "history/lista";
     }
 
+
 }
