@@ -11,11 +11,15 @@
 <body>
     <div class="container">
         <h1>Lista de Empleados</h1>
-        <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/newFrm}">Nuevo Empleado</a>                 <!-- COMPLETAR -->
-        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/buscar}">                <!-- COMPLETAR -->
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/newFrm}">Nuevo Empleado</a>
+        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/buscar}">
             <!-- COMPLETAR -->
             <div class="input-group-append">
-                <!-- COMPLETAR -->
+                <div>
+                    <input type="text" name="word" style="outline: none; padding:10px;width: 300px">
+                    <button type="submit">Buscar</button>
+
+                </div>
             </div>
         </form>
 
