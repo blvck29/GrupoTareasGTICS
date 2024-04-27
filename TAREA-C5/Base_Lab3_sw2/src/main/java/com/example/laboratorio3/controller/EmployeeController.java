@@ -71,7 +71,8 @@ public class EmployeeController {
                               @RequestParam("puesto") String puesto,
                               @RequestParam("sueldo") String sueldo,
                               @RequestParam("jefe") String jefe,
-                              @RequestParam("departamento") String departamento) {
+                              @RequestParam("departamento") String departamento,
+                              RedirectAttributes attr) {
 
         Optional<Job> optionalJob = jobRepository.findById(puesto);
         Job empJob = new Job();
@@ -105,6 +106,7 @@ public class EmployeeController {
 
         employeesRepository.save(employee);
 
+        attr.addAttribute("msg", "Uusuario creado exitosamente");
         return "redirect:/employee/lista";
     }
 
