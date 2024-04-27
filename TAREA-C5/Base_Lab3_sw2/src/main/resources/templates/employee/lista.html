@@ -24,6 +24,7 @@
             <table class="table table-sm" th:if="${listaEmpleados.size() != 0}">
                 <thead>
                 <tr>
+                    <td>#</td>
                     <td>Nombre</td>
                     <td>Apellido</td>
                     <td>Puesto</td>
@@ -34,7 +35,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="employee : ${listaEmpleados}">
+                <tr th:each="employee, IterIndex : ${listaEmpleados}">
+                    <td th:text="${IterIndex.index}"></td>
                     <td th:text="${employee.getFirstName()}"></td>
                     <td th:text="${employee.getLastName()}"></td>
                     <td th:text="${employee.getJob().getJobTitle()}"></td>
