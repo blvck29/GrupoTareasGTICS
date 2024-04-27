@@ -13,27 +13,29 @@
 <form method="post" th:action="@{/employee/editPostEmployee}">
     <div class="row">
         <div class="form-group col-6 d-flex flex-column">
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="nombre" th:value="${employee.getFirstName()}">
+            <label >Nombre</label>
+            <input type="text" name="first_name" th:value="${employee.getFirstName()}">
+            <input type="hidden" name="employeeId" th:value="${employee.getEmployee_id()}">
+
         </div>
         <div class="form-group col-6 d-flex flex-column">
-            <label for="apellido">Apellido</label>
-            <input type="text" name="apellido" id="apellido" th:value="${employee.getLastName()}">
+            <label >Apellido</label>
+            <input type="text" name="last_name"  th:value="${employee.getLastName()}">
         </div>
     </div>
 
     <div class="row">
         <div class="form-group col-6 d-flex flex-column">
-            <label for="correo">Correo Electrónico</label>
-            <input type="text" name="correo" id="correo" th:value="${employee.getEmail()}">
+            <label >Correo Electrónico</label>
+            <input type="text" name="email" th:value="${employee.getEmail()}">
         </div>
     </div>
 
     <div class="row">
         <div class="form-group col-6 d-flex flex-column">
             <label>Puesto</label>
-            <select name="puesto">
-                <option value="null" selected>Seleccionar</option>
+            <select name="job_id">
+                <option th:if="${employee.getJob() != null}" th:value="${employee.getJob().getJobId()}" th:text="${employee.getJob().getJobTitle()}" selected></option>
                 <div th:each="p : ${listaPuestos}" >
                     <option th:text="${p.getJobTitle()}" th:value="${p.getJobId()}"></option>
                 </div>
@@ -41,7 +43,7 @@
         </div>
         <div class="form-group col-6 d-flex flex-column">
             <label for="sueldo">Sueldo</label>
-            <input type="text" name="sueldo" id="sueldo" th:value="${employee.getSalary()}">
+            <input type="text" name="salary" id="sueldo" th:value="${employee.getSalary()}">
         </div>
     </div>
 
@@ -49,10 +51,11 @@
         <div class="form-group col-6 d-flex flex-column">
 
             <label>Jefe</label>
-            <select name="jefe" >
-                <option value="null" selected>Seleccionar</option>
-                <div th:each="jefe : ${listaJefes}" >
-                    <option th:text="${jefe.getManager().getFirstName()} + ' ' + ${jefe.getManager().getLastName()}" th:value="${jefe.getManager().getEmployee_id()}"></option>
+            <option th:if="${employee.getManager() != null}" th:value="${employee.getManager().getEmployee_id()}" th:text="${employee.getManager().getFirstName()} + ${employee.getManager().getLastName()}" selected></option>
+            <select name="manager_id" required>
+                <option th:if="${employee.getManager() != null}" th:value="${employee.getManager().getEmployee_id()}" th:text="${employee.getManager().getFirstName()} + ${employee.getManager().getLastName()}" selected></option>
+                <div th:each="jefe : ${listaJefes}">
+                    <option th:if="${jefe.getManager() != null}" th:text="${jefe.getManager().getFirstName()} + ' ' + ${jefe.getManager().getLastName()}" th:value="${jefe.getManager().getEmployee_id()}"></option>
                 </div>
             </select>
 
@@ -60,8 +63,9 @@
         </div>
         <div class="form-group col-6 d-flex flex-column">
             <label>Departamento</label>
-            <select name="departamento">
-                <option value="null" selected>Seleccionar</option>
+            <select name="department_id" >
+                <option th:if="${employee.getDepartment() != null}" th:value="${employee.getDepartment().getDepartmentId()}" th:text="${employee.getDepartment().getDepartmentName()}" selected></option>
+
                 <div th:each="dep : ${listaJefes}" >
                     <option th:text="${dep.getDepartmentName()}" th:value="${dep.getDepartmentId()}"></option>
                 </div>

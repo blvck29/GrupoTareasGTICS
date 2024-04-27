@@ -27,6 +27,9 @@ public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
     List<Employees> ListaFiltrada(String word);
 
 
+
+
+
     @Query(value = "SELECT e.first_name AS Nombre, e.last_name AS Apellido, j.job_title AS Puesto, d.department_name AS Departamento, date(jh.start_Date) AS \"FechaInicio\" FROM job_history jh \n" +
             "LEFT JOIN jobs j ON jh.job_id = j.job_id \n" +
             "LEFT JOIN employees e ON e.employee_id = jh.employee_id \n" +

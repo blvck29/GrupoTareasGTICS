@@ -142,5 +142,16 @@ public class EmployeeController {
     }
 
 
+   @PostMapping(value="/employee/editPostEmployee")
+    public String editEmployee(Employees employee){
+
+       employeesRepository.save(employee);
+
+       return "redirect:/employee/lista";
+
+
+   }
+
+
 
 }
