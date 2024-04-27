@@ -49,7 +49,9 @@
 
                     <label for="jefe">Jefe</label>
                     <select name="jefe" id="jefe">
-                        <option th:each="jefe : ${listaJefes}" th:text="${jefe.getManager().get}" value="jefe"></option>
+                        <div th:each="jefe : ${listaJefes}" >
+                            <option th:if="${jefe.getManager() != null}" th:text="${jefe.getManager().getFirstName()} + ' ' + ${jefe.getManager().getLastName()}" th:value="${jefe.getManager().getEmployee_id()}"></option>
+                        </div>
                     </select>
 
 
