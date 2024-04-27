@@ -12,6 +12,11 @@
     <div class="container">
         <h1>Lista de Empleados</h1>
         <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/newFrm}">Nuevo Empleado</a>
+
+        <div class="container">
+            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+        </div>
+
         <form class="input-group mb-lg-3" method="post" th:action="@{/employee/buscar}">
             <!-- COMPLETAR -->
             <div class="input-group-append">
@@ -24,10 +29,6 @@
                 </div>
             </div>
         </form>
-
-        <div class="container">
-            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
-        </div>
 
             <table class="table table-sm" th:if="${listaEmpleados.size() != 0}">
                 <thead>
