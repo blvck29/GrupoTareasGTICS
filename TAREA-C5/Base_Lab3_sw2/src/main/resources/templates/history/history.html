@@ -8,9 +8,46 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 </head>
 <body class="container">
-<h1>Historial de empleados</h1>
-<a th:href="@{/employee/lista}">Ir a la gestión de empleados</a><br />
-<a th:href="@{/history/history}">Ir al historial de empleados</a><br />
-<a th:href="@{/Search/indice}">Reportes</a>
+<div class="container">
+  <h1>Historial de empleados</h1>
+
+  <form class="input-group mb-lg-3" method="post" th:action="@{/history/buscar}">
+    <!-- COMPLETAR -->
+    <div class="input-group-append">
+      <div style="display: flex; flex-direction: row; column-gap: 10px">
+        <input type="text" name="word" style="outline: none; padding:10px;width: 300px; border:2px solid dimgray; border-radius: 6px">
+        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+        <a href="/Laboratorio3/history/history"><button type="button" class="btn btn-outline-danger" style="height: 47px">Limpiar Filtros</button></a>
+      </div>
+    </div>
+  </form>
+
+  <!-- COMPLETAR -->
+  <!-- COMPLETAR -->
+  <table class="table table-sm" th:if="${listaHistorialEmpleados.size() != 0}">
+    <thead>
+    <tr>
+      <td>Nombre</td>
+      <td>Apellido</td>
+      <td>Puesto</td>
+      <td>Departamento</td>
+      <td>Fecha Inicio</td>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="history: ${listaHistorialEmpleados}">
+      <td th:text="${history.getNombre()}"></td>
+      <td th:text="${history.getApellido()}"></td>
+      <td th:text="${history.getPuesto()}"></td>
+      <td th:text="${history.getDepartamento()}"></td>
+      <td th:text="${history.getFechaInicio()}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p th:if="${listaHistorialEmpleados.size()==0}">No se encontró historial de empleados</p>
+
+</div>
 </body>
 </html>
