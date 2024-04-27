@@ -15,9 +15,11 @@
         <form class="input-group mb-lg-3" method="post" th:action="@{/employee/buscar}">
             <!-- COMPLETAR -->
             <div class="input-group-append">
-                <div>
-                    <input type="text" name="word" style="outline: none; padding:10px;width: 300px">
-                    <button type="submit">Buscar</button>
+                <div style="display: flex; flex-direction: row; column-gap: 10px">
+                    <input type="text" placeholder="Texto a buscar" name="word" style="outline: none; padding:10px;width: 800px; border:2px solid #aaaaaa; border-radius: 6px">
+                    <button type="submit" class="btn btn-outline-primary">Buscar</button>
+                    <a href="/Laboratorio3/employee/lista"><button type="button" class="btn btn-outline-danger" style="height: 47px">Limpiar Filtros</button></a>
+
 
                 </div>
             </div>
@@ -50,7 +52,7 @@
                         <form class="input-group mb-lg-3" method="post" th:action="@{/employee/editFrm}">                <!-- COMPLETAR -->
                             <!-- COMPLETAR -->
                             <div class="input-group-append">
-                                <!-- COMPLETAR -->
+                                <button type="button" class="btn btn-primary">Editar</button>
                             </div>
                         </form>
                     </td>
@@ -58,13 +60,16 @@
                         <form class="input-group mb-lg-3" method="post" th:action="@{/employee/borrar}">                <!-- COMPLETAR -->
                             <!-- COMPLETAR -->
                             <div class="input-group-append">
-                                <!-- COMPLETAR -->
+                                <button type="button" class="btn btn-danger">Borrar</button>
                             </div>
                         </form>
                     </td>
                 </tr>
                 </tbody>
             </table>
+
+        <p th:if="${listaEmpleados.size()==0}">No se encontro un empleado con ese nombre</p>
+
         </div>
     </body>
 </html>

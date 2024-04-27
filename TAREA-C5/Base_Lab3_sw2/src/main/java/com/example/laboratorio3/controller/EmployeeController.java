@@ -4,8 +4,10 @@ import com.example.laboratorio3.entity.Employees;
 import com.example.laboratorio3.repository.EmployeesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import com.example.laboratorio3.repository.JobRepository;
 import com.example.laboratorio3.repository.LocationRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
