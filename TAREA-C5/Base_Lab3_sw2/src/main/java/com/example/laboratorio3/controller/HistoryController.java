@@ -19,12 +19,12 @@ public class HistoryController {
     @GetMapping(value = "/history/lista")
     public String listaHistory(Model model){
         model.addAttribute("listaHistorialEmpleados",employeesRepository.listaHistoriaEmpleado(""));
-        return "history/lista";
+        return "history/history";
     }
     @GetMapping(value = "/history/buscar")
     public String buscarHistory(Model model, @RequestParam(value = "busqueda",required = false,defaultValue = "") String busqueda) {
         model.addAttribute("listaHistorialEmpleados",employeesRepository.listaHistoriaEmpleado(busqueda));
-        return "history/lista";
+        return "history/history";
     }
 
 
