@@ -1,6 +1,9 @@
 package com.example.laboratorio3.controller;
 
+import com.example.laboratorio3.entity.Department;
 import com.example.laboratorio3.entity.Employees;
+import com.example.laboratorio3.entity.Job;
+import com.example.laboratorio3.repository.DepartmetRepository;
 import com.example.laboratorio3.repository.EmployeesRepository;
 <<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +27,13 @@ public class EmployeeController {
     final EmployeesRepository employeesRepository;
     final JobRepository jobRepository;
     final LocationRepository locationRepository;
+    final DepartmetRepository departmetRepository;
 
-    public EmployeeController(EmployeesRepository employeesRepository, JobRepository jobRepository, LocationRepository locationRepository) {
+    public EmployeeController(EmployeesRepository employeesRepository, JobRepository jobRepository, LocationRepository locationRepository, DepartmetRepository departmetRepository) {
         this.employeesRepository = employeesRepository;
         this.jobRepository = jobRepository;
         this.locationRepository = locationRepository;
+        this.departmetRepository = departmetRepository;
     }
 
     //COMPLETAR
@@ -39,8 +44,12 @@ public class EmployeeController {
         return "employee/lista";
     }
     @GetMapping(value = "/employee/newFrm")
-    public String nuevoEmployeeForm( ) {
-        //COMPLETAR
+    public String nuevoEmployeeForm(Model model) {
+        List<Job> listaPuestos = jobRepository.findAll();
+        List<Department> listaJefes = departmetRepository.findAll();
+
+        model.addAttribute("listaPuestos", listaPuestos);
+        model.addAttribute("listaJefes",listaJefes);
         return "employee/newFrm";
     }
 
@@ -50,7 +59,7 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/employee/editFrm")
-    public String editarEmployee() {
+    public String editarEmployee(Model model) {
         return "employee/editFrm";
     }
 
