@@ -24,12 +24,38 @@
             <table class="table table-sm" th:if="${listaEmpleados.size() != 0}">
                 <thead>
                 <tr>
-                    <!-- COMPLETAR -->
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Puesto</td>
+                    <td>Departamento</td>
+                    <td>Ciudad</td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="employee : ${listaEmpleados}">
-                    <td></td>
+                    <td th:text="${employee.getFirstName()}"></td>
+                    <td th:text="${employee.getLastName()}"></td>
+                    <td th:text="${employee.getJob().getJobTitle()}"></td>
+                    <td th:text="${employee.getDepartment().getDepartmentName()}"></td>
+                    <td th:text="${employee.getDepartment().getLocation().getCity()}"></td>
+                    <td>
+                        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/editFrm}">                <!-- COMPLETAR -->
+                            <!-- COMPLETAR -->
+                            <div class="input-group-append">
+                                <!-- COMPLETAR -->
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/borrar}">                <!-- COMPLETAR -->
+                            <!-- COMPLETAR -->
+                            <div class="input-group-append">
+                                <!-- COMPLETAR -->
+                            </div>
+                        </form>
+                    </td>
                 </tr>
                 </tbody>
             </table>
