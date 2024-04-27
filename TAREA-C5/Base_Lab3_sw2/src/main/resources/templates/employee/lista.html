@@ -49,12 +49,12 @@
                     <td th:text="${employee.getDepartment().getDepartmentName()}"></td>
                     <td th:text="${employee.getDepartment().getLocation().getCity()}"></td>
                     <td>
-                        <form class="input-group mb-lg-3" method="post" th:action="@{/employee/editFrm}">                <!-- COMPLETAR -->
+
                             <!-- COMPLETAR -->
                             <div class="input-group-append">
-                                <button type="button" class="btn btn-primary">Editar</button>
+                                <a th:href="@{'/employee/editFrm' + '?id=' + ${employee.getEmployee_id()}}"><button type="button" class="btn btn-primary">Editar</button></a>
                             </div>
-                        </form>
+
                     </td>
                     <td>
                         <form class="input-group mb-lg-3" method="post" th:action="@{/employee/borrar}">                <!-- COMPLETAR -->
