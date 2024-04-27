@@ -1,7 +1,9 @@
 package com.example.laboratorio3.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 //COMPLETAR
@@ -9,24 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EmployeeController {
 
     //COMPLETAR
-    @GetMapping(value = "/employee/main")
-    public String mainPage(){
-        return "employee/main";
-    }
     @GetMapping(value = "/employee/lista")
     public String listaEmployee(   ){
         //COMPLETAR
         return "employee/lista";
     }
-    @GetMapping(value = "/employee/neFrm")
+    @GetMapping(value = "/employee/newFrm")
     public String nuevoEmployeeForm( ) {
         //COMPLETAR
-        return "/employee/neFrm";
+        return "employee/newFrm";
     }
 
     @GetMapping(value = "/employee")
     public String guardarEmployee() {
-        return "";
+        return "employee/lista";
     }
 
     @GetMapping(value = "/employee/editFrm")
@@ -34,9 +32,9 @@ public class EmployeeController {
         return "employee/editFrm";
     }
 
-    @GetMapping(value = "/employee")
-    public String borrarEmpleado() {
-        return "/employee/";
+    @GetMapping(value = "/employee/borrar")
+    public String borrarEmpleado(Model model) {
+        return "redirect:employee/lista";
     }
 
 
